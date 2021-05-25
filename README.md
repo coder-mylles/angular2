@@ -36,7 +36,7 @@ Run ng build to build the project. The build artifacts will be stored in the dis
 The application does not display the list of repositories as expected.
 
 ## Support and Contact Details
-For any comments,suggestions,feedback or inquiries, contact me via email: marti.mylles@student.moringaschool.com
+For any comments,suggestions,feedback or inquiries, contact me via email: martin.mylles@student.moringaschool.com
 
 Make contributions to the code.
 
