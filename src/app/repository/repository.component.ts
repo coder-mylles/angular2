@@ -1,52 +1,46 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-repository',
-//   templateUrl: './repository.component.html',
-//   styleUrls: ['./repository.component.css']
-// })
-// export class RepositoryComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnInit } from '@angular/core';
-import { RepoHttpServiceService } from "../repo-http-service.service";
-// import {Github} from '../github';
-// import { Gitrepo } from '../gitrepo';
-import { Repository } from '../repository';
+import { RepositoryComponent  }from './profile.service';
 
 @Component({
-  selector: 'app-repository',
-  templateUrl: './repository.component.html',
-  styleUrls: ['./repository.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class RepositoryComponent implements OnInit {
-  gitrepos:Repository;
+export class ProfileComponent implements OnInit {
+  profile:any;
+  repos:any;
+  username:string;
 
-    constructor(public RepoHttpService:RepoHttpServiceService) {
-     }
+constructor(private profileService:RepositoryComponent ){
+  this.profileService.updateProfile(this.username);
+  this.profileService.getProfileInfo().subscribe(profile => {
+    console.log(profile);
+    this.profile = profile;
+  });
 
+  this.profileService.getProfileRepos().subscribe(repos => {
+    console.log(repos);
+    this.repos = repos;
+  });
+}
+ 
+findProfile(){
+  this.profileService.updateProfile(this.username);
+  this.profileService.getProfileInfo().subscribe(profile => {
+    console.log(profile);
+    this.profile = profile;
+  });
 
-    ngOnInit() {
-      this.searchRepo("Ndundiro");
-    }
-
-    searchRepo(searchTerm){
-      this.RepoHttpService.searchRepo(searchTerm).then(
-        ()=>{
-          this.gitrepos=this.RepoHttpService.gitrepos;
-          //  console.log(this.gitrepos);
-
-        },
-        (error)=>{
-          console.log(error)
-        }
-      )
-      // console.log(searchTerm)
-    }
+  this.profileService.getProfileRepos().subscribe(repos => {
+    console.log(repos);
+    this.repos = repos;
+  })
+}
+  ngOnInit() {
+    
+    this.profileService.updateProfile('martin-moringa');
+    this.profileService.getProfileInfo().subscribe(profile => this.profile = profile);
+    this.profileService.getProfileRepos().subscribe(repos =>  this.repos = repos);
   }
+
+}
