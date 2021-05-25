@@ -5,7 +5,7 @@ An angular application that allows user to search for their git hub accounts.Aft
 
 ## Screenshot
 
-<img src="src/assets/gits.png">
+<img src="https://github.com/martin-moringa/angular2/blob/main/src/assets/gits.png?raw=true">
 
 ## Behaviour Driven Development(BDD)
 The website has the following functionalities:
